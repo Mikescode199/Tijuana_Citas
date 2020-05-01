@@ -69,7 +69,7 @@ def datos_usuario(request):
 class CrearUsuario(generic.FormView):
     template_name = 'singout.html'
     form_class = NewUser
-    success_url = reverse_lazy('usuario:datos_usuario')
+    success_url = reverse_lazy('usuario:formulario_usuario')
 
     def form_valid(self, form):
         user = form.save()
@@ -99,3 +99,17 @@ def quejas(request):
 class Llevar_chica(LoginRequiredMixin, generic.DetailView):
     template_name = 'llevarchica.html'
     model = Chica
+
+def formulario_usuario(request):
+    if request.method == 'POST':
+        form = Usuario_informacion(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            form.save()
+            return redirect('usuario:registro_user')
+    else:
+            form = Usuario_informacion()
+        
+    return render(request, 'usuarioformulario.html', {'form':form } )

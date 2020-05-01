@@ -12,4 +12,5 @@ urlpatterns = [
     path('0003/', views.Menu_chicas.as_view(), name="Menu_chicas"),
     path('3003/', views.quejas, name="quejas"),
     path('4003/<int:pk>', views.Llevar_chica.as_view(), name='Llevar_chica'),
+    path('5003/', views.formulario_usuario, name="formulario_usuario"),
 ]

@@ -18,6 +18,7 @@ class Usuario_informacion(forms.ModelForm):
         fields = [
             'nombre',
             'apellidos',
+            'numero_telefono',
             'fecha_nacimiento',
             'direccion',
             'lugar_nacimiento',
@@ -26,6 +27,7 @@ class Usuario_informacion(forms.ModelForm):
         labels = {
             'nombre':'Nombre',
             'apellidos':'Apellidos',
+            'numero_telefono':'Télefono',
             'fecha_nacimiento':'Fecha nacimiento',
             'direccion':'Dirección',
             'lugar_nacimiento':'Lugar nacimiento',
@@ -34,6 +36,7 @@ class Usuario_informacion(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={}),
             'apellidos':forms.TextInput(attrs={}),
+            'numero_telefono':forms.TextInput(attrs={}),
             'fecha_nacimiento': forms.TextInput(attrs={}),
             'direccion': forms.TextInput(attrs={}),
             'lugar_nacimiento': forms.TextInput(attrs={}),
