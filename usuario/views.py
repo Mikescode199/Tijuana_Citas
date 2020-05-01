@@ -1,12 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+#Llamadas a los modelos
 from .models import Usuario
+from adminmacc.models import Admin
+from chicas.models import Chica
+#Fin de llamadas a los modelos 
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+#Llamadas al Form
 from .forms import NewUser, LoginForm, Usuario_informacion
+from adminmacc.forms import Admin_informacion
+from chicas.forms import Chica_informacion
+# Fin de llamadas al Form
 
 
 # Función 0000 Registro de usuarios
@@ -66,5 +74,9 @@ class CrearUsuario(generic.FormView):
     def form_valid(self, form):
         user = form.save()
         return super(CrearUsuario, self).form_valid(form)
+
 # Función 0003 
-# Función 0004 
+class Menu_chicas(generic.ListView):
+    template_name = 'index.html'
+    model = Chica
+

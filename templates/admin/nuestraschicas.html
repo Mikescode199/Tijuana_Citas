@@ -1,0 +1,42 @@
+{% extends 'admin/dashboard.html' %}
+{% block page_content %}
+<div class="row">
+    <div class="col-md-12">
+    <div class="card ">
+        <div class="card-header ">
+        <a href="#" class="btn btn-outline-info"> Nueva chica </a>
+        <h5 class="card-title">Nuestras chicas</h5>
+        <p class="card-category">
+            <table border="1" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre  </th>
+                        <th>Acciones</th>
+                        
+        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chicas_macc in object_list %}
+                    <tr>
+                        <td> {{ chicas_macc.nombre }}  </td>
+                        <td><a href="{% url 'adminmacc:Ver_chica' chicas_macc.pk  %}" class="btn btn-outline-info">Ver {{ chicas_macc.apodo }}</a></td>
+                        <td><a href="{% url 'adminmacc:Editar_chica' chicas_macc.pk  %}" class="btn btn-outline-success">Editar</a></td>
+                        <td><a href="{% url 'adminmacc:Eliminar_chica' chicas_macc.pk  %}" class="btn btn-outline-danger">Eliminar</a></td>
+                    </tr> 
+                {% endfor %}
+                </tbody>
+            </table>
+            
+        
+        </p>
+        
+        </div>
+        <div class="card-body ">
+        <canvas id=chartHours width="400" height="100"></canvas>
+        </div>
+        <div class="card-footer ">
+    </div>
+    </div>
+</div>
+{% endblock page_content %}

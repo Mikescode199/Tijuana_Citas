@@ -1,0 +1,10 @@
+{% extends 'admin/dashboard.html' %}
+{% block page_content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-danger" >Eliminar {{ object.nombre }}</button>
+    <a href="{% url 'adminmacc:Nuestras_chicas' %}" class="btn btn-outline-success"> Volver </a>
+</form>
+
+{% endblock page_content %}

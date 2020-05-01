@@ -1,0 +1,31 @@
+Estructura de modelos:
+
+Usuario:
+Foto de perfil
+Nombre 
+Apellidos
+número de teléfono 
+Fecha de nacimiento
+Dirección 
+lugar de nacimiento
+estado civil 
+
+Chicas:
+Fotos
+apodo
+#El nombre solo lo veran los administradores 
+Nombre 
+Apellidos 
+número de teléfono 
+fecha nacimiento
+estado civil
+un poco sobre mí
+
+administradores
+foto de perfil
+nombre 
+apellidos 
+número de teléfono 
+fecha de nacimiento
+direccion
+lugar de procedencia 
