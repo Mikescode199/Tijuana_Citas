@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block contenido %}
+<div class="box">
+	<div class="inner">
+        <img src="{{ MEDIA_URL }} {{ object.imagen_profile.url }}" style="width:150px; height:200px"/>
+        <img src="{{ MEDIA_URL }} {{ object.imagen_segunda.url }}" style="width:150px; height:200px"/>
+        <img src="{{ MEDIA_URL }} {{ object.imagen_tercera.url }}" style="width:150px; height:200px"/>
+        <h3>{{ object.apodo }}</h3>
+        <p>{{ object.estado_civil }}</p>
+        <p>{{ object.direccion }}</p>
+        <p>{{ object.sobre_mi}}</p>
+        <a href="#" class="button fit" data-poptrox="youtube,800x400">Hacer cita</a>
+    </div>
+    
+</div>
+{% endblock contenido %}

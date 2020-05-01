@@ -8,6 +8,8 @@ class Chica(models.Model):
     # Fotos
     #El nombre solo lo veran los administradores
     imagen_profile = models.ImageField(upload_to = 'media',blank=True)
+    imagen_segunda = models.ImageField(upload_to = 'media',blank=True)
+    imagen_tercera = models.ImageField(upload_to = 'media',blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     apodo = models.CharField(max_length=60)
     nombre  = models.CharField(max_length=60)

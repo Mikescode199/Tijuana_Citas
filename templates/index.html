@@ -33,6 +33,7 @@
 				</section>
 
 			<!-- Main -->
+			    {% block contenido %}
 				<div id="main">
 					<div class="inner">
 
@@ -48,7 +49,7 @@
 									<h3>{{ chicas_macc.apodo }}</h3>
 									<p>{{ chicas_macc.estado_civil }}</p>
 									<p>{{ chicas_macc.direccion }}</p>
-									<a href="#" class="button fit" data-poptrox="youtube,800x400">Watch</a>
+									<a href="{% url 'usuario:Llevar_chica' chicas_macc.pk  %}" class="button fit" data-poptrox="youtube,800x400">Ver</a>
 								</div>
 							</div>
 
@@ -60,18 +61,21 @@
 
 					</div>
 				</div>
+				{% endblock contenido %}
 
 			<!-- Footer -->
 				<footer id="footer">
 					<div class="inner">
 						<h2>Bienvenido {{ request.user }}</h2>
-						<p>Pellentesque eleifend malesuada efficitur. Curabitur volutpat dui mi, ac imperdiet dolor tincidunt nec. Ut erat lectus, dictum sit amet lectus a, aliquet rutrum mauris. Etiam nec lectus hendrerit, consectetur risus viverra, iaculis orci. Phasellus eu nibh ut mi luctus auctor. Donec sit amet dolor in diam feugiat venenatis. </p>
+						<p>MACC CODE una empresa dedicada a mejorar la vida mediante software </p>
+						<p>Por favor lee nuestas politicas de <a href="#">privacidad</a> y nuetros <a href="#"> terminos y condiciones </a> </p>
+						<p>Tienes alguna <a href="{% url 'usuario:quejas' %}"> queja o sugerencia </a>, cuéntanos</p>
 
 						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+							<!-- <li><a href="https://www.youtube.com/channel/UCviqgSAKbp_RfqWR0DScgkQ" class="icon fa-twitter"><span class="label">Youtube</span></a></li> -->
+							<li><a href="https://www.facebook.com/Mikescode076" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.instagram.com/mikescode076/?hl=es-la" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<!-- <li><a href="https://www.mikesservices199@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li> -->
 						</ul>
 						<p class="copyright">&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>. Videos: <a href="http://coverr.co/">Coverr</a>.</p>
 					</div>

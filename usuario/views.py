@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 #Llamadas a los modelos
-from .models import Usuario
+from .models import Usuario, Quejas_segerencias
 from adminmacc.models import Admin
 from chicas.models import Chica
 #Fin de llamadas a los modelos 
@@ -11,7 +11,7 @@ from django.contrib.auth import logout
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 #Llamadas al Form
-from .forms import NewUser, LoginForm, Usuario_informacion
+from .forms import NewUser, LoginForm, Usuario_informacion, Quejas_usuario
 from adminmacc.forms import Admin_informacion
 from chicas.forms import Chica_informacion
 # Fin de llamadas al Form
@@ -31,7 +31,7 @@ def registro_user(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('usuario:menu')
+                    return redirect('usuario:Menu_chicas')
                     message = 'En curso...'
                    
                 else:
@@ -76,7 +76,26 @@ class CrearUsuario(generic.FormView):
         return super(CrearUsuario, self).form_valid(form)
 
 # Función 0003 
-class Menu_chicas(generic.ListView):
+class Menu_chicas(LoginRequiredMixin,generic.ListView):
     template_name = 'index.html'
     model = Chica
 
+#función 3003 Quejas y sugerencias
+def quejas(request):
+    if request.method == 'POST':
+        form = Quejas_usuario(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            form.save()
+            return redirect('usuario:Menu_chicas')
+    else:
+            form = Quejas_usuario()
+        
+    return render(request, 'quejas.html', {'form':form } )
+
+#Llevar chica 
+class Llevar_chica(LoginRequiredMixin, generic.DetailView):
+    template_name = 'llevarchica.html'
+    model = Chica

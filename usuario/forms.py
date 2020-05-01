@@ -1,6 +1,6 @@
 from django import forms 
 from . import views
-from .models import Usuario
+from .models import Usuario, Quejas_segerencias
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -38,4 +38,17 @@ class Usuario_informacion(forms.ModelForm):
             'direccion': forms.TextInput(attrs={}),
             'lugar_nacimiento': forms.TextInput(attrs={}),
             'estado_civil' : forms.TextInput(attrs={}),
+        }
+
+class Quejas_usuario(forms.ModelForm):
+    class Meta:
+        model = Quejas_segerencias
+        fields = [
+            'queja_sujerencia',
+        ]
+        labels = {
+            'queja_sujerencia':'Quejas o Sugerencias',
+        }
+        widgets = {
+            'queja_sujerencia': forms.TextInput(attrs={}),
         }

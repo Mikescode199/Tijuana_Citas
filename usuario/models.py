@@ -16,4 +16,8 @@ class Usuario(models.Model):
     def __str__(self):
         return '{}'.format(self.user)
 
+class Quejas_segerencias(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    queja_sujerencia = models.TextField()
+
 
