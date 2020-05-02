@@ -50,7 +50,7 @@ def registro_user(request):
     return render(request, 'login.html', context)
 
 # Función 0001 Datos del usuario
-# @login_required(login_url='')
+@login_required(login_url='')
 def datos_usuario(request):
     if request.method == 'POST':
         form = Usuario_informacion(request.POST)
@@ -81,6 +81,7 @@ class Menu_chicas(LoginRequiredMixin,generic.ListView):
     model = Chica
 
 #función 3003 Quejas y sugerencias
+@login_required(login_url='')
 def quejas(request):
     if request.method == 'POST':
         form = Quejas_usuario(request.POST)
@@ -100,16 +101,3 @@ class Llevar_chica(LoginRequiredMixin, generic.DetailView):
     template_name = 'llevarchica.html'
     model = Chica
 
-def formulario_usuario(request):
-    if request.method == 'POST':
-        form = Usuario_informacion(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            form.save()
-            return redirect('usuario:registro_user')
-    else:
-            form = Usuario_informacion()
-        
-    return render(request, 'usuarioformulario.html', {'form':form } )

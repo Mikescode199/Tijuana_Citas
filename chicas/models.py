@@ -23,3 +23,14 @@ class Chica(models.Model):
 
     def __str__(self):
         return '{}'.format(self.user)
+
+class Experiencias_chica(models.Model):
+    #ESTA SECCIÓN ES REQUERIDA 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    nombre_cliente = models.CharField(max_length=60)
+    direccion_servicio = models.TextField()
+    tarifa = models.CharField(max_length=60)
+    bitacora_servicio = models.TextField(default='No hay problemas')
+
+
+

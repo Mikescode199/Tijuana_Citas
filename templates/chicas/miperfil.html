@@ -1,0 +1,81 @@
+{% extends 'admin/dashboard.html' %}
+{% block enlaces %}
+<div class="logo">
+    <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+      <div class="logo-image-small">
+
+      </div>
+      <!-- <p>CT</p> -->
+    </a>
+    <a href="#" class="simple-text logo-normal">
+      Chicas MACC
+      <!-- <div class="logo-image-big">
+        <img src="../assets/img/logo-big.png">
+      </div> -->
+    </a>
+  </div>
+<div class="sidebar-wrapper">
+
+    <ul class="nav">
+      <li class="active ">
+        <a href="{% url 'chicas:perfil_chica' %}">
+          <!-- <i class="nc-icon nc-bank"></i> -->
+          <p>Mi perfil</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'chicas:historial_chica' %}">
+          <p>Historial</p>
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          <p>Experiencias</p>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+{% endblock enlaces %}
+
+
+{% block page_content %}
+<div class="row">
+    <form method="POST">
+        <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header ">
+            <h5 class="card-title"></h5>
+            <p class="card-category">
+              <!-- DATOS DE LA CHICA MACC -->
+              {% for datos_chica in model %}
+              <b>Nombre:</b> {{ datos_chica.nombre }}<br />
+                <b>Apellidos:</b> {{ datos_chica.apellidos }}<br />
+                <b>Apodo:</b> {{ datos_chica.apodo }}<br />
+                <b>Número de celular:</b> {{ datos_chica.numero_telefono }}<br />
+                <b>Estado Cívil:</b> {{ datos_chica.estado_civil }}<br />
+                <b>Fecha de nacimiento:</b> {{ datos_chica.fecha_nacimiento }}<br />
+                <b>Dirección:</b> {{ datos_chica.direccion }}<br />
+                <b>Lugar de procedencia:</b> {{ datos_chica.lugar_procedencia }}<br />
+                <b>Sobre mí:</b> {{ datos_chica.sobre_mi }}<br />
+                <img src="{{ MEDIA_URL }} {{ datos_chica.imagen_profile.url }}" style="width:150px;"/>
+              {% endfor %}
+            </p>
+            
+            
+            </div>
+            <div class="card-body ">
+            <canvas id=chartHours width="400" height="100"></canvas>
+            </div>
+            <div class="card-footer ">
+            <hr>
+            <div class="stats">
+            <!-- algo aqui -->
+            </div>
+            </div>
+        </div>
+        </div>
+    </form>
+</div>
+{% endblock page_content%}

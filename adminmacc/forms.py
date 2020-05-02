@@ -29,3 +29,4 @@ class Admin_informacion(forms.ModelForm):
             'direccion': forms.TextInput(attrs={}),
             'lugar_procedencia': forms.TextInput(attrs={}),
         }
+
